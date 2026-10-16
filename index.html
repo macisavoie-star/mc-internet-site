@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071a3d">
+  <meta name="description" content="M&C Internet: provedor de acesso à internet e serviços de telecomunicações em Iguaba Grande, Rio de Janeiro.">
+  <meta name="robots" content="index, follow">
+  <title>M&C Internet | Conexão que aproxima</title>
+  <style>
+    :root {
+      --navy: #071a3d;
+      --navy-2: #0d2b61;
+      --blue: #1267e3;
+      --cyan: #24c9e8;
+      --ink: #14213d;
+      --muted: #63708a;
+      --paper: #f7faff;
+      --white: #ffffff;
+      --line: #dce6f5;
+      --shadow: 0 18px 50px rgba(7, 26, 61, .12);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+    .skip-link { position: absolute; left: -9999px; top: 12px; z-index: 20; }
+    .skip-link:focus { left: 16px; padding: 10px 14px; background: var(--white); border-radius: 8px; }
+
+    .notice-bar { padding: 8px 20px; color: #e8f1ff; background: #101a3a; font-size: .71rem; line-height: 1.35; text-align: center; }
+    .notice-bar p { max-width: 760px; margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(7, 26, 61, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; color: var(--white); font-weight: 800; letter-spacing: -.04em; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 13px; background: linear-gradient(135deg, var(--cyan), #5d7cff); color: var(--navy); font-weight: 900; box-shadow: 0 8px 20px rgba(36, 201, 232, .25); }
+    .brand-name { font-size: 1.1rem; }
+    nav { display: flex; align-items: center; gap: 23px; }
+    nav a { color: #dbe9ff; text-decoration: none; font-size: .92rem; }
+    nav a:hover, nav a:focus-visible { color: var(--cyan); }
+    .nav-cta { padding: 10px 15px; border: 1px solid rgba(36,201,232,.55); border-radius: 999px; }
+
+    .hero { color: var(--white); background: radial-gradient(circle at 82% 18%, rgba(36,201,232,.22), transparent 28%), linear-gradient(135deg, var(--navy), var(--navy-2)); padding: 94px 0 108px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 70px; }
+    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 680px; margin-bottom: 22px; font-size: clamp(2.7rem, 6vw, 5.3rem); line-height: .98; letter-spacing: -.07em; }
+    .hero-copy { max-width: 590px; color: #c7d8f4; font-size: 1.13rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 20px; border: 1px solid transparent; border-radius: 999px; text-decoration: none; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); }
+    .button-primary { color: var(--navy); background: var(--cyan); box-shadow: 0 12px 26px rgba(36,201,232,.22); }
+    .button-secondary { color: var(--white); border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.06); }
+    .signal-card { position: relative; min-height: 360px; display: flex; align-items: center; justify-content: center; }
+    .signal-ring { position: absolute; border: 1px solid rgba(36,201,232,.32); border-radius: 50%; }
+    .ring-one { width: 360px; height: 360px; }
+    .ring-two { width: 250px; height: 250px; }
+    .ring-three { width: 150px; height: 150px; }
+    .signal-core { position: relative; width: 122px; height: 122px; display: grid; place-items: center; border-radius: 34px; background: linear-gradient(135deg, var(--cyan), #7183ff); color: var(--navy); font-size: 2.5rem; box-shadow: 0 0 70px rgba(36,201,232,.3); }
+    .signal-core::before, .signal-core::after { content: ""; position: absolute; border: 2px solid rgba(255,255,255,.68); border-radius: 50%; }
+    .signal-core::before { width: 42px; height: 42px; border-left-color: transparent; border-bottom-color: transparent; transform: rotate(-45deg); }
+    .signal-core::after { width: 72px; height: 72px; border-left-color: transparent; border-bottom-color: transparent; transform: rotate(-45deg); }
+
+    section { padding: 92px 0; }
+    .section-head { max-width: 670px; margin-bottom: 34px; }
+    .section-head h2 { margin-bottom: 12px; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.02; letter-spacing: -.055em; }
+    .section-head p { color: var(--muted); font-size: 1.05rem; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: -44px; position: relative; z-index: 2; }
+    .stat { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); }
+    .stat strong { display: block; color: var(--blue); font-size: 1.55rem; line-height: 1.1; }
+    .stat span { display: block; margin-top: 7px; color: var(--muted); font-size: .92rem; }
+
+    .services { background: var(--white); }
+    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .service { min-height: 210px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, #fff, #f4f8ff); }
+    .service-icon { width: 42px; height: 42px; display: grid; place-items: center; margin-bottom: 19px; border-radius: 13px; color: var(--blue); background: #e7f0ff; font-size: 1.2rem; font-weight: 900; }
+    .service h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    .service p { margin-bottom: 0; color: var(--muted); font-size: .93rem; }
+
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: start; }
+    .about-panel { padding: 28px; color: var(--white); border-radius: var(--radius); background: var(--navy); box-shadow: var(--shadow); }
+    .about-panel h3 { margin-bottom: 12px; color: var(--cyan); }
+    .about-panel p { margin-bottom: 0; color: #c7d8f4; }
+    .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 28px; border-top: 1px solid var(--line); }
+    .fact { padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .fact b { display: block; color: var(--muted); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
+    .fact span { display: block; margin-top: 4px; }
+
+    .contact { color: var(--white); background: var(--navy); }
+    .contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .contact h2 { font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1; letter-spacing: -.06em; }
+    .contact p { color: #c7d8f4; }
+    .contact-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .contact-card { padding: 20px; border: 1px solid rgba(255,255,255,.16); border-radius: 16px; background: rgba(255,255,255,.06); }
+    .contact-card b { display: block; margin-bottom: 5px; color: var(--cyan); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; }
+    .contact-card a { color: var(--white); text-decoration: none; overflow-wrap: anywhere; }
+
+    footer { padding: 30px 0 110px; color: #aebed9; background: var(--navy); border-top: 1px solid rgba(255,255,255,.12); }
+    .footer-line { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-line p { margin: 0; font-size: .88rem; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { color: #c7d8f4; font-size: .88rem; text-decoration: none; }
+
+    .cookie-banner { position: fixed; right: 20px; bottom: 20px; z-index: 30; display: none; width: min(360px, calc(100% - 40px)); padding: 14px; color: var(--ink); border: 2px solid #2d53bd; border-radius: 0; background: var(--white); box-shadow: 5px 5px 0 #dff22d, 0 20px 45px rgba(7,26,61,.2); }
+    .cookie-banner.is-visible { display: block; }
+    .cookie-content { display: block; }
+    .cookie-copy { max-width: none; }
+    .cookie-copy h2 { margin: 0 0 5px; color: var(--navy); font-size: .96rem; }
+    .cookie-copy p { margin: 0; color: #4d5870; font-size: .78rem; line-height: 1.45; }
+    .cookie-copy a { color: #214cc2; }
+    .cookie-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .cookie-button { min-height: 38px; padding: 8px 10px; border: 2px solid #2d53bd; border-radius: 0; color: #214cc2; background: var(--white); font: inherit; font-size: .78rem; font-weight: 800; cursor: pointer; }
+    .cookie-button:hover, .cookie-button:focus-visible { color: var(--white); background: #214cc2; }
+    .cookie-button.accept { color: var(--white); border-color: #214cc2; background: #214cc2; }
+
+    @media (max-width: 900px) {
+      nav a:not(.nav-cta) { display: none; }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .hero { padding: 70px 0 82px; }
+      .signal-card { min-height: 280px; }
+      .ring-one { width: 280px; height: 280px; }
+      .ring-two { width: 200px; height: 200px; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, 1160px); }
+      section { padding: 66px 0; }
+      .stats, .service-grid, .facts, .contact-list { grid-template-columns: 1fr; }
+      .stats { margin-top: -30px; }
+      .footer-line, .cookie-content { align-items: flex-start; flex-direction: column; }
+      .cookie-banner { left: 12px; right: 12px; bottom: 12px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TelecommunicationsService",
+    "name": "M&C Internet",
+    "legalName": "Cdc Tecnologia e Telecomunicacoes LTDA",
+    "taxID": "64.868.521/0001-48",
+    "email": "atendimentomecinternet@gmail.com",
+    "telephone": "+55 22 99889-7357",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Fabio Ricardo de Souza Oliveira, 258",
+      "addressLocality": "Iguaba Grande",
+      "addressRegion": "RJ",
+      "postalCode": "28961-152",
+      "addressCountry": "BR"
+    },
+    "areaServed": "Iguaba Grande, RJ"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="notice-bar" role="note">
+    <p>Somos uma empresa de telecomunicações com sede em Iguaba Grande/RJ. A M&amp;C Internet atua com acesso às redes de comunicações e serviços de comunicação multimídia — sem vínculo com órgãos governamentais e com operação independente e privada.</p>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="M&C Internet, página inicial">
+        <span class="brand-mark" aria-hidden="true">M&C</span>
+        <span class="brand-name">M&C Internet</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+        <a class="nav-cta" href="https://wa.me/5522998897357" target="_blank" rel="noopener noreferrer">Fale conosco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">M&C Internet · Iguaba Grande/RJ</div>
+          <h1>Conexão que aproxima.</h1>
+          <p class="hero-copy">Internet e telecomunicações para manter pessoas, famílias e negócios conectados com mais tranquilidade no dia a dia.</p>
+          <div class="actions">
+            <a class="button button-primary" href="https://wa.me/5522998897357" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+            <a class="button button-secondary" href="#servicos">Conhecer serviços</a>
+          </div>
+        </div>
+        <div class="signal-card" aria-hidden="true">
+          <div class="signal-ring ring-one"></div>
+          <div class="signal-ring ring-two"></div>
+          <div class="signal-ring ring-three"></div>
+          <div class="signal-core">∞</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap stats" aria-label="Informações rápidas da empresa">
+      <div class="stat"><strong>Desde 2026</strong><span>Empresa ativa em Iguaba Grande</span></div>
+      <div class="stat"><strong>SCM</strong><span>Serviços de comunicação multimídia</span></div>
+      <div class="stat"><strong>Atendimento direto</strong><span>Suporte por telefone, WhatsApp e e-mail</span></div>
+    </div>
+
+    <section class="services" id="servicos">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">O que fazemos</div>
+          <h2>Estrutura para você seguir conectado.</h2>
+          <p>Atuamos com acesso à internet e soluções de telecomunicações para atender as necessidades de conexão da nossa região.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service"><div class="service-icon">↗</div><h3>Acesso à internet</h3><p>Provedoria de acesso às redes de comunicações para uma navegação mais prática no cotidiano.</p></article>
+          <article class="service"><div class="service-icon">⌁</div><h3>Telecomunicações</h3><p>Serviços de telecomunicações por fio e sem fio para diferentes necessidades de conectividade.</p></article>
+          <article class="service"><div class="service-icon">◌</div><h3>Comunicação multimídia</h3><p>Serviços de comunicação multimídia — SCM — para conectar pessoas e operações.</p></article>
+          <article class="service"><div class="service-icon">+</div><h3>Atendimento próximo</h3><p>Contato direto com a equipe M&C Internet para orientar, atender e encaminhar sua solicitação.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about-grid">
+        <div class="about-panel">
+          <h3>Sobre a M&C Internet</h3>
+          <p>A M&C Internet é o nome fantasia da Cdc Tecnologia e Telecomunicacoes LTDA, empresa de telecomunicações com sede em Iguaba Grande, no estado do Rio de Janeiro.</p>
+        </div>
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">Informações da empresa</div>
+            <h2>Uma empresa local, com conexão para o futuro.</h2>
+            <p>Confira os principais dados cadastrais e de atuação da empresa.</p>
+          </div>
+          <div class="facts">
+            <div class="fact"><b>Razão social</b><span>Cdc Tecnologia e Telecomunicacoes LTDA</span></div>
+            <div class="fact"><b>CNPJ</b><span>64.868.521/0001-48</span></div>
+            <div class="fact"><b>Natureza jurídica</b><span>Sociedade Empresária Limitada</span></div>
+            <div class="fact"><b>Porte</b><span>Micro Empresa</span></div>
+            <div class="fact"><b>Situação cadastral</b><span>Ativa</span></div>
+            <div class="fact"><b>Capital social</b><span>R$ 80.000,00</span></div>
+            <div class="fact"><b>Atividade principal</b><span>61.90-6-01 — Provedores de acesso às redes de comunicações</span></div>
+            <div class="fact"><b>Município</b><span>Iguaba Grande — RJ</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="wrap contact-grid">
+        <div>
+          <div class="eyebrow">Vamos conversar</div>
+          <h2>Precisa de conexão? Fale com a M&C Internet.</h2>
+          <p>Entre em contato pelos canais abaixo. Nossa equipe está pronta para receber sua mensagem.</p>
+          <div class="actions"><a class="button button-primary" href="https://wa.me/5522998897357" target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a></div>
+        </div>
+        <div class="contact-list">
+          <div class="contact-card"><b>WhatsApp e telefone</b><a href="tel:+5522998897357">(22) 99889-7357</a></div>
+          <div class="contact-card"><b>E-mail</b><a href="mailto:atendimentomecinternet@gmail.com">atendimentomecinternet@gmail.com</a></div>
+          <div class="contact-card"><b>Endereço</b><span>Rua Fabio Ricardo de Souza Oliveira, 258<br>Tamariz · Iguaba Grande/RJ<br>CEP 28961-152</span></div>
+          <div class="contact-card"><b>Responsáveis</b><span>Luciano Marins Cunha<br>Raphael Lopes Marinho da Silva</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-line">
+      <p>© 2026 M&C Internet · Cdc Tecnologia e Telecomunicacoes LTDA · CNPJ 64.868.521/0001-48<br>Serviços de telecomunicações e acesso às redes de comunicações.</p>
+      <div class="footer-links"><a href="#privacidade" id="privacidade-link">Privacidade</a><a href="#termos" id="termos-link">Termos de uso</a></div>
+    </div>
+  </footer>
+
+  <aside class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="cookie-content">
+      <div class="cookie-copy">
+        <h2>Preferências de cookies</h2>
+        <p>Usamos apenas cookies necessários para lembrar sua escolha e melhorar a experiência básica do site. Não há tags de conversão, Google Ads, Bing Ads ou ferramentas de rastreamento nesta versão. <a href="#privacidade">Saiba mais</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="cookie-button" type="button" id="cookie-reject">Recusar não essenciais</button>
+        <button class="cookie-button accept" type="button" id="cookie-accept">Aceitar cookies</button>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    (function () {
+      const storageKey = 'mc-internet-cookie-consent';
+      const banner = document.getElementById('cookie-banner');
+      const saved = window.localStorage.getItem(storageKey);
+      if (!saved) banner.classList.add('is-visible');
+      function saveConsent(value) {
+        window.localStorage.setItem(storageKey, value);
+        banner.classList.remove('is-visible');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function () { saveConsent('accepted'); });
+      document.getElementById('cookie-reject').addEventListener('click', function () { saveConsent('necessary-only'); });
+      document.getElementById('privacidade-link').addEventListener('click', function (event) {
+        event.preventDefault();
+        window.alert('Política de privacidade: esta versão não utiliza cookies de publicidade, tags de conversão ou ferramentas de rastreamento de terceiros.');
+      });
+      document.getElementById('termos-link').addEventListener('click', function (event) {
+        event.preventDefault();
+        window.alert('Termos de uso: conteúdo institucional da M&C Internet. Para dúvidas, entre em contato pelo e-mail atendimentomecinternet@gmail.com.');
+      });
+    }());
+  </script>
+</body>
+</html>
